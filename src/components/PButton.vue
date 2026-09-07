@@ -1,9 +1,8 @@
 <template>
   <component
+    v-bind="propsSafe"
     :is="getElTag"
-    v-bind="$attrs"
     :class="classNames"
-    :disabled="disabled"
   >
     <slot :label="label">
       <span
@@ -39,6 +38,12 @@ const classNames = computed(() => [
   props.loading && generateClass(componentName, 'loading'),
   generateClass(componentName, props.size),
 ])
+
+const propsSafe = computed<Record<string, unknown>>(() => {
+  const { href, disabled, ...rest } = props
+
+  return getElTag.value === 'a' ? { ...rest, href } : { ...rest, disabled }
+})
 
 const getElTag = computed<'a' | 'button'>(() => {
   if (props.to) {
