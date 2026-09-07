@@ -51,6 +51,12 @@
   --p-radius-round: 50%;
 }
 
+.p-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .p-radius--none {
   border-radius: var(--p-radius-none);
 }
