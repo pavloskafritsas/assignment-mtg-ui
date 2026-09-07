@@ -33,7 +33,7 @@
                   :index="i"
                   :name="`cell_${header.key}`"
                   :row="row"
-                  :value="header.key"
+                  :value="getCellValue(row, header.key, header.value)"
                 >
                   <span v-text="getCellValue(row, header.key, header.value)" />
                 </slot>
